@@ -356,7 +356,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 46b1c8141e4e2094c8a33a0e86b70daf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -447,8 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fbf6d083f8d5ae4a9c2e945b69811d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_player: {fileID: 1722250531}
-  m_stickPoint: {x: -2.78, y: 1.1}
+  m_ropeSize: 0.2
   m_ropeSegmentPrefab: {fileID: 2811920585352265178, guid: f2cdf4012e29be04f810895399266873, type: 3}
 --- !u!4 &1117192199
 Transform:

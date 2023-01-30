@@ -4,23 +4,54 @@ using System.Collections.Generic;
 public class Rope : MonoBehaviour
 {
     //VARIABLES
-    private float m_ropeSize = 0.2f;
+    [SerializeField] private float m_ropeSize = 0.2f;
     private List<GameObject> m_ropeSegments = new List<GameObject>();
 
     //REFERENCES
-    [SerializeField] private GameObject m_player;
-    [SerializeField] private Vector2 m_stickPoint;
     [SerializeField] private GameObject m_ropeSegmentPrefab;
+    private GameObject m_player;
+    private Vector2 m_stickPoint;
     private LineRenderer m_lineRenderer;
 
     private void Start()
     {
+        m_player = transform.parent.gameObject;
         m_lineRenderer = GetComponent<LineRenderer>();
-        GenerateRope();
+
+        //testing
+        GenerateRope( new Vector2(-2.78f, 1.1f) );
     }
 
-    private void GenerateRope()
+    private void Update()
     {
+        DrawRope();
+    }
+
+    private void DrawRope()
+    {
+        //set the width of the rope
+        m_lineRenderer.startWidth = m_ropeSize;
+        m_lineRenderer.endWidth = m_ropeSize;
+
+        m_lineRenderer.positionCount = m_ropeSegments.Count + 1;
+
+        m_lineRenderer.SetPosition(m_ropeSegments.Count, m_player.transform.position);
+        for (int i = 0; i < m_ropeSegments.Count; i++)
+        {
+            m_lineRenderer.SetPosition(i, m_ropeSegments[i].transform.position);
+        }
+    }
+
+    private void ClearCurrentRope()
+    {
+    }
+
+    private void GenerateRope(Vector2 stickPoint)
+    {
+        ClearCurrentRope();
+
+        m_stickPoint = stickPoint;
+
         //calculate the distance between the player and the stick point
         float distance = Vector2.Distance(m_player.transform.position, m_stickPoint);
 
