@@ -19,4 +19,4 @@ https://trello.com/b/0uom8m8X/swinger
 
 # Start Working
 
-Just open project and hit play, moron.
+Just open project and hit play.
