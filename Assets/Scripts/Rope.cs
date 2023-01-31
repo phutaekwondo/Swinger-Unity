@@ -19,7 +19,7 @@ public class Rope : MonoBehaviour
         m_lineRenderer = GetComponent<LineRenderer>();
 
         //testing
-        GenerateRope( new Vector2(-2.78f, 1.1f) );
+        GenerateRopeWithDirection(new Vector2(0.8f,1) ) ;
     }
 
     private void Update()
@@ -46,7 +46,24 @@ public class Rope : MonoBehaviour
     {
     }
 
-    private void GenerateRope(Vector2 stickPoint)
+    private void GenerateRopeWithDirection(Vector2 direction)
+    {
+        //find the stick point
+        RaycastHit2D hit = Physics2D.Raycast(m_player.transform.position, direction, 100f, LayerMask.GetMask("Obstacle"));
+        if (hit.collider != null)
+        {
+            m_stickPoint = hit.point;
+        }
+        else
+        {
+            return;
+        }
+
+        if (m_stickPoint == (Vector2)m_player.transform.position) { return; }
+        GenerateRopeWithStickPoint(m_stickPoint);
+    }
+
+    private void GenerateRopeWithStickPoint(Vector2 stickPoint)
     {
         ClearCurrentRope();
 
@@ -81,7 +98,6 @@ public class Rope : MonoBehaviour
                 Quaternion.identity);
             ropeSegment.transform.localScale = new Vector2(m_ropeSize, m_ropeSize);
             ropeSegment.transform.SetParent(this.transform);
-            Debug.Log(m_ropeSegments[i - 1].GetComponent<Rigidbody2D>());
             ropeSegment.GetComponent<DistanceJoint2D>().connectedBody = m_ropeSegments[i - 1].GetComponent<Rigidbody2D>();
             m_ropeSegments.Add(ropeSegment);
         }
