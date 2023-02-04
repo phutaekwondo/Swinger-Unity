@@ -13,6 +13,25 @@ public class Rope : MonoBehaviour
     private Vector2 m_stickPoint;
     private LineRenderer m_lineRenderer;
 
+    //PUBLIC METHODS
+    public void GenerateRopeWithDirection(Vector2 direction)
+    {
+        //find the stick point
+        RaycastHit2D hit = Physics2D.Raycast(m_player.transform.position, direction, 100f, LayerMask.GetMask("Obstacle"));
+        if (hit.collider != null)
+        {
+            m_stickPoint = hit.point;
+        }
+        else
+        {
+            return;
+        }
+
+        if (m_stickPoint == (Vector2)m_player.transform.position) { return; }
+        GenerateRopeWithStickPoint(m_stickPoint);
+    }
+
+    //PRIVATE METHODS
     private void Start()
     {
         m_player = transform.parent.gameObject;
@@ -24,7 +43,7 @@ public class Rope : MonoBehaviour
 
     private void Update()
     {
-        DrawRope();
+        // DrawRope();
     }
 
     private void DrawRope()
@@ -44,23 +63,13 @@ public class Rope : MonoBehaviour
 
     private void ClearCurrentRope()
     {
-    }
-
-    private void GenerateRopeWithDirection(Vector2 direction)
-    {
-        //find the stick point
-        RaycastHit2D hit = Physics2D.Raycast(m_player.transform.position, direction, 100f, LayerMask.GetMask("Obstacle"));
-        if (hit.collider != null)
+        //destroy all the rope segments
+        for (int i = 0; i < m_ropeSegments.Count; i++)
         {
-            m_stickPoint = hit.point;
-        }
-        else
-        {
-            return;
+            Destroy(m_ropeSegments[i]);
         }
 
-        if (m_stickPoint == (Vector2)m_player.transform.position) { return; }
-        GenerateRopeWithStickPoint(m_stickPoint);
+        m_ropeSegments.Clear();
     }
 
     private void GenerateRopeWithStickPoint(Vector2 stickPoint)
@@ -87,6 +96,7 @@ public class Rope : MonoBehaviour
         firstRopeSegment.transform.localScale = new Vector2(m_ropeSize, m_ropeSize);
         firstRopeSegment.transform.SetParent(this.transform);
         firstRopeSegment.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
+        firstRopeSegment.GetComponent<Joint2D>().enabled = false;
         m_ropeSegments.Add(firstRopeSegment);
 
         //gererate rope Segments from the player to the stick point
@@ -95,13 +105,15 @@ public class Rope : MonoBehaviour
             GameObject ropeSegment = Instantiate(
                 m_ropeSegmentPrefab, 
                 m_stickPoint + (direction * m_ropeSize * i), 
-                Quaternion.identity);
+                Quaternion.identity
+                );
             ropeSegment.transform.localScale = new Vector2(m_ropeSize, m_ropeSize);
             ropeSegment.transform.SetParent(this.transform);
-            ropeSegment.GetComponent<DistanceJoint2D>().connectedBody = m_ropeSegments[i - 1].GetComponent<Rigidbody2D>();
+            Joint2D ropeSegmentJoint = ropeSegment.GetComponent<Joint2D>();
+            ropeSegmentJoint.connectedBody = m_ropeSegments[i - 1].GetComponent<Rigidbody2D>();
             m_ropeSegments.Add(ropeSegment);
         }
 
-        m_player.GetComponent<DistanceJoint2D>().connectedBody = m_ropeSegments[m_ropeSegments.Count- 1].GetComponent<Rigidbody2D>();
+        m_player.GetComponent<Joint2D>().connectedBody = m_ropeSegments[m_ropeSegments.Count- 1].GetComponent<Rigidbody2D>();
     }
 }

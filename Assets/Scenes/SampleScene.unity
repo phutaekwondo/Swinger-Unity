@@ -311,7 +311,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561803191}
   m_LocalRotation: {x: -0, y: -0, z: 0.36204818, w: 0.93215936}
-  m_LocalPosition: {x: 0.44, y: 0.56, z: -0.2933466}
+  m_LocalPosition: {x: 2.87, y: 0.55, z: -0.2933466}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -328,15 +328,44 @@ GameObject:
   m_Component:
   - component: {fileID: 1117192199}
   - component: {fileID: 1117192198}
-  - component: {fileID: 1117192197}
+  - component: {fileID: 1117192200}
   m_Layer: 6
-  m_Name: TestingRope
+  m_Name: Rope
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!120 &1117192197
+--- !u!114 &1117192198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117192196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fbf6d083f8d5ae4a9c2e945b69811d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ropeSize: 0.2
+  m_ropeSegmentPrefab: {fileID: 2811920585352265178, guid: f2cdf4012e29be04f810895399266873, type: 3}
+--- !u!4 &1117192199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117192196}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1722250535}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!120 &1117192200
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -435,35 +464,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &1117192198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117192196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fbf6d083f8d5ae4a9c2e945b69811d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_ropeSize: 0.2
-  m_ropeSegmentPrefab: {fileID: 2811920585352265178, guid: f2cdf4012e29be04f810895399266873, type: 3}
---- !u!4 &1117192199
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1117192196}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7, y: -1.46, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1722250535}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1722250531
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +476,8 @@ GameObject:
   - component: {fileID: 1722250534}
   - component: {fileID: 1722250533}
   - component: {fileID: 1722250532}
-  - component: {fileID: 1722250536}
+  - component: {fileID: 1722250537}
+  - component: {fileID: 1722250538}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -496,7 +497,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.7853982
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -581,7 +582,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722250531}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.7, y: -1.46, z: 0}
+  m_LocalPosition: {x: -4.03, y: 1.36, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -589,7 +590,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!232 &1722250536
+--- !u!114 &1722250537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722250531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df3f5b1704cbd6498180157fb13b8a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!232 &1722250538
 DistanceJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -606,7 +619,7 @@ DistanceJoint2D:
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 4.921544
+  m_Distance: 4.253293
   m_MaxDistanceOnly: 0
 --- !u!1 &1752269423
 GameObject:
