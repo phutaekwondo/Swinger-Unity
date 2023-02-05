@@ -329,7 +329,6 @@ GameObject:
   - component: {fileID: 611526390}
   - component: {fileID: 611526389}
   - component: {fileID: 611526387}
-  - component: {fileID: 611526388}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -358,25 +357,6 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!232 &611526388
-DistanceJoint2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 611526386}
-  m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 19.458675
-  m_MaxDistanceOnly: 0
 --- !u!212 &611526389
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -504,7 +484,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46b1c8141e4e2094c8a33a0e86b70daf, type: 2}
+  - {fileID: 2100000, guid: e57b852511680b74d8e7162bc180eddd, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
