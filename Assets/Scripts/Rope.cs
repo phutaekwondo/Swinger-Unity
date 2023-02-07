@@ -96,7 +96,6 @@ public class Rope : MonoBehaviour
         firstRopeSegment.transform.localScale = new Vector2(m_ropeSize, m_ropeSize);
         firstRopeSegment.transform.SetParent(this.transform);
         firstRopeSegment.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
-        firstRopeSegment.GetComponent<Joint2D>().enabled = false;
         m_ropeSegments.Add(firstRopeSegment);
 
         //gererate rope Segments from the player to the stick point
@@ -109,11 +108,10 @@ public class Rope : MonoBehaviour
                 );
             ropeSegment.transform.localScale = new Vector2(m_ropeSize, m_ropeSize);
             ropeSegment.transform.SetParent(this.transform);
-            Joint2D ropeSegmentJoint = ropeSegment.GetComponent<Joint2D>();
-            ropeSegmentJoint.connectedBody = m_ropeSegments[i - 1].GetComponent<Rigidbody2D>();
+            ropeSegment.GetComponent<HardJoint2D>().SetConnectedGameObject(m_ropeSegments[i-1]);
             m_ropeSegments.Add(ropeSegment);
         }
 
-        m_player.GetComponent<Joint2D>().connectedBody = m_ropeSegments[m_ropeSegments.Count- 1].GetComponent<Rigidbody2D>();
+        m_player.GetComponent<HardJoint2D>().SetConnectedGameObject(m_ropeSegments[m_ropeSegments.Count-1]);
     }
 }

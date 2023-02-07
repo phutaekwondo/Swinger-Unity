@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2811920585352265175}
   - component: {fileID: 2811920585352265174}
   - component: {fileID: 2811920585352265173}
-  - component: {fileID: 3403736614960247507}
-  m_Layer: 6
+  - component: {fileID: -4508031994305270363}
+  m_Layer: 8
   m_Name: RopeSegment
-  m_TagString: Untagged
+  m_TagString: RopeSegment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,7 +94,7 @@ CircleCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811920585352265178}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -124,22 +124,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!232 &3403736614960247507
-DistanceJoint2D:
+--- !u!114 &-4508031994305270363
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2811920585352265178}
   m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 0.2
-  m_MaxDistanceOnly: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff8231ac59ecfd4cba5b4fd5f610306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_connectedGameObject: {fileID: 0}

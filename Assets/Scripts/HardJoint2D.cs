@@ -3,23 +3,57 @@ using UnityEngine;
 public class HardJoint2D : MonoBehaviour
 {
     //VARIABLES
-    private float m_distance;
+    [SerializeField] private float m_distance;
+    private bool m_isEnable = false;
     //REFERENCES
     [SerializeField] GameObject m_connectedGameObject;
     Rigidbody2D m_rigidbody;
 
     //PUBLIC METHODS
+    public void SetConnectedGameObject(GameObject connectingObject)
+    {
+        m_connectedGameObject = connectingObject;
+        CalculateDistance();
+        UpdateEnablement(); 
+    }
 
     //PRIVATE METHODS
     private void Start() {
-        m_distance = Vector2.Distance(transform.position, m_connectedGameObject.transform.position);
+        if (!m_isEnable)
+        {
+            return;
+        }
+        CalculateDistance();
         m_rigidbody = GetComponent<Rigidbody2D>();
     }
 
     private void Update() 
     {
+        if (!m_isEnable)
+        {
+            return;
+        }
+
+        UpdateEnablement();
         MaintainDistance();
         UpdateVeclocity();
+    }
+
+    private void UpdateEnablement()
+    {
+        if (!m_connectedGameObject || !m_rigidbody)
+        {
+            m_isEnable = false;
+        }
+        else
+        {
+            m_isEnable = true;
+        }
+    }
+
+    private void CalculateDistance()
+    {
+        m_distance = Vector2.Distance(transform.position, m_connectedGameObject.transform.position);
     }
 
     private void UpdateVeclocity()

@@ -543,6 +543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ff8231ac59ecfd4cba5b4fd5f610306, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_distance: 0
   m_connectedGameObject: {fileID: 611526386}
 --- !u!1 &1117192196
 GameObject:
@@ -706,7 +707,7 @@ GameObject:
   - component: {fileID: 1722250538}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -828,25 +829,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df3f5b1704cbd6498180157fb13b8a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!232 &1722250538
-DistanceJoint2D:
+--- !u!114 &1722250538
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1722250531}
   m_Enabled: 1
-  serializedVersion: 4
-  m_EnableCollision: 0
-  m_ConnectedRigidBody: {fileID: 0}
-  m_BreakForce: Infinity
-  m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 0
-  m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 4.253293
-  m_MaxDistanceOnly: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ff8231ac59ecfd4cba5b4fd5f610306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_distance: 0
+  m_connectedGameObject: {fileID: 0}
 --- !u!1 &1752269423
 GameObject:
   m_ObjectHideFlags: 0
